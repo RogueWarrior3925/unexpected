@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnm670r5dtkxw"]
+
+[ext_resource type="Script" uid="uid://dk4jtktpkiqm7" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://bqsiut3hsedq2" path="res://projectile.tscn" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://c60klmp16nu3s" path="res://pixil-frame-0 (8).png" id="2_onrkg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(23, 66)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_4flbx")
+projectile_scene = ExtResource("2_i3pqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_onrkg")
+disabled = true
+
+[node name="player" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(0.753906, 0.816406)
+texture = ExtResource("2_onrkg")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+offset_right = 4.0
+offset_bottom = 27.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
