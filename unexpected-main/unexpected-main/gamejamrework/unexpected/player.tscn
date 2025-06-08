@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnm670r5dtkxw"]
+
+[ext_resource type="Script" uid="uid://dk4jtktpkiqm7" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://c60klmp16nu3s" path="res://pixil-frame-0 (8).png" id="2_onrkg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(23, 66)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_onrkg")
+disabled = true
+
+[node name="player" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(0.753906, 0.816406)
+texture = ExtResource("2_onrkg")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
