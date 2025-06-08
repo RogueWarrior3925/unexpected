@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://br65mgv2n0bbd"]
+
+[ext_resource type="Script" uid="uid://bmey4j3rytjgs" path="res://bullet_2d.gd" id="1_lg2ne"]
+[ext_resource type="Texture2D" uid="uid://dhpwwdb0dg8je" path="res://Ice-shard-projectile.png" id="2_e2vlj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e2vlj"]
+radius = 8.0
+height = 54.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e2vlj"]
+radius = 9.0
+
+[node name="bullet_2D" type="CharacterBody2D"]
+script = ExtResource("1_lg2ne")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.999992, 0)
+rotation = -1.56598
+scale = Vector2(0.176758, 0.160156)
+texture = ExtResource("2_e2vlj")
+
+[node name="bullet" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bullet"]
+position = Vector2(-5, 0)
+rotation = 1.5719
+shape = SubResource("CapsuleShape2D_e2vlj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e2vlj")
+
+[connection signal="body_entered" from="bullet" to="." method="_on_bullet_body_entered"]

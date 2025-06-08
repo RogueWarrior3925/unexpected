@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu5nwwe4jctfx"]
+
+[ext_resource type="Script" uid="uid://do0qokgn0edw4" path="res://blaster.gd" id="1_5a6mb"]
+[ext_resource type="Texture2D" uid="uid://m8nvtbl0xl4u" path="res://game jam game/Blaster.png" id="1_uyb60"]
+[ext_resource type="Script" uid="uid://d0pitcwiv1nn7" path="res://marker_2d.gd" id="3_fng3n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q50ie"]
+height = 20.0
+
+[node name="blaster" type="CharacterBody2D"]
+script = ExtResource("1_5a6mb")
+
+[node name="Blaster" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(42, 0)
+scale = Vector2(0.570313, 0.570313)
+texture = ExtResource("1_uyb60")
+
+[node name="rotation" type="Marker2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_fng3n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-48, -132)
+shape = SubResource("CapsuleShape2D_q50ie")
+disabled = true

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs8avgf7o8aip"]
+
+[ext_resource type="Script" uid="uid://bmey4j3rytjgs" path="res://bullet_2d.gd" id="1_2n5tg"]
+[ext_resource type="Texture2D" uid="uid://bfwh1281poxk2" path="res://pixil-frame-0 (9).png" id="2_2n5tg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e2vlj"]
+radius = 8.0
+height = 54.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e2vlj"]
+radius = 9.0
+
+[node name="bullet_2Dfriendly" type="CharacterBody2D"]
+self_modulate = Color(1, 0.0666667, 1, 1)
+script = ExtResource("1_2n5tg")
+
+[node name="bulletf" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bulletf"]
+position = Vector2(-5, 0)
+rotation = 1.5719
+shape = SubResource("CapsuleShape2D_e2vlj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e2vlj")
+
+[node name="Pixil-frame-0(9)" type="Sprite2D" parent="."]
+position = Vector2(-27.75, 0)
+scale = Vector2(1.115, 0.34)
+texture = ExtResource("2_2n5tg")
+
+[connection signal="body_entered" from="bulletf" to="." method="_on_bullet_body_entered"]
